@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OL Élec</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="OL Élec conçoit des logiciels pédagogiques pour les cours d’électricité du bâtiment et d’électromécanique, dont le Banc de câblage, un simulateur de schémas électriques utilisé en classe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: une seule colonne éditoriale ; le faisceau de conducteurs (L1 L2 L3 N PE) traverse la page sous l’en-tête et ferme le pied de page. */
+:root{
+  --bg:#f2f1ec; --surface:#ffffff; --ink:#1d2226; --muted:#5b636a; --line:#dbd8d0;
+  --accent:#cf4f0d; --accent-soft:#f9e1d2; --accent-ink:#ffffff;
+  --w-brun:#8b5a2b; --w-noir:#1b1d1f; --w-gris:#8f969c; --w-bleu:#1f63c6; --w-vert:#2f9e44; --w-jaune:#e2b400;
+  --display:'Barlow Condensed','Arial Narrow',sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141719; --surface:#1c2023; --ink:#ecebe6; --muted:#a2a8ad; --line:#2d3236;
+  --accent:#ff7a33; --accent-soft:#3a2415; --accent-ink:#1a0c04; --w-noir:#050607; --w-gris:#9aa1a7; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#141719; --surface:#1c2023; --ink:#ecebe6; --muted:#a2a8ad; --line:#2d3236;
+  --accent:#ff7a33; --accent-soft:#3a2415; --accent-ink:#1a0c04; --w-noir:#050607; --w-gris:#9aa1a7; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:.005em;text-wrap:balance;margin:0}
+h2{font-size:clamp(34px,4.6vw,52px)}
+h3{font-size:25px;line-height:1.1}
+p{margin:0}
+.eyebrow{font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.mono{font-family:var(--mono);font-size:.82em}
+
+/* en-tête */
+.top{position:sticky;top:env(safe-area-inset-top, 0px);z-index:10;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{font-family:var(--display);font-size:27px;font-weight:800;letter-spacing:.02em}
+.nav{display:flex;gap:20px;flex-wrap:wrap}
+.nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:15.5px}
+.nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:center;padding-block:64px 40px}
+.hero h1{font-size:clamp(44px,5.8vw,74px);font-weight:800;margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:19px;color:var(--muted);margin-top:22px;max-width:34em}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-1px)}
+.shot{border-radius:var(--radius);border:1px solid var(--line);background:var(--surface);box-shadow:0 18px 40px -22px rgba(20,24,28,.35);overflow:hidden}
+.shot img{width:100%;height:auto}
+
+/* faisceau */
+.harness{padding-block:6px 0}
+.harness .wrap{display:grid;gap:5px}
+.wire{display:grid;grid-template-columns:30px 1fr;align-items:center;gap:10px}
+.wire span{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right}
+.wire i{height:5px;border-radius:3px;display:block}
+.w1 i{background:var(--w-brun)} .w2 i{background:var(--w-noir);box-shadow:0 0 0 1px var(--line)} .w3 i{background:var(--w-gris)} .w4 i{background:var(--w-bleu)}
+.w5 i{background:repeating-linear-gradient(135deg,var(--w-vert) 0 10px,var(--w-jaune) 10px 20px)}
+
+section{padding-block:84px}
+.sec-head{display:grid;gap:14px;max-width:46em}
+.sec-head p{color:var(--muted);font-size:18px}
+
+/* faits */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:22px 18px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{display:block;font-family:var(--display);font-size:44px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.fact span{display:block;color:var(--muted);font-size:15px;margin-top:6px}
+
+/* lignes image + texte */
+.rows{display:grid;gap:72px;margin-top:64px}
+.row{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:center}
+.row.flip .shot{order:2}
+.row .txt{display:grid;gap:14px;min-width:0}
+.row .txt p{color:var(--muted)}
+.ticks{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.ticks li{padding-left:22px;position:relative}
+.ticks li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent)}
+
+/* aussi */
+.also{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 36px;margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
+.also div{display:grid;gap:6px;min-width:0}
+.also h3{font-size:22px}
+.also p{color:var(--muted);font-size:16px}
+
+/* téléphone */
+.phone-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:48px;align-items:center;margin-top:72px}
+.phone{width:240px;max-width:100%;border-radius:34px;padding:9px;background:#15181b;box-shadow:0 20px 40px -20px rgba(0,0,0,.45)}
+.phone img{border-radius:26px;width:100%;height:auto}
+
+/* licences */
+.lic{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:44px}
+.plan{border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:grid;gap:12px;align-content:start;background:var(--bg)}
+.plan.key{border:2px solid var(--accent)}
+.plan .tag{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.plan h3{font-size:30px}
+.plan p{color:var(--muted);font-size:16px}
+.note{margin-top:28px;color:var(--muted)}
+
+/* à propos */
+.about .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
+.about p{color:var(--muted);margin-top:16px}
+.soon{border:1px dashed var(--line);border-radius:var(--radius);padding:28px;display:grid;gap:12px;align-content:start}
+.soon .eyebrow{color:var(--muted)}
+
+/* contact */
+.contact .box{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:center;border-radius:14px;padding:44px;background:var(--ink);color:var(--bg)}
+.contact h2{color:var(--bg)}
+.contact p{opacity:.8;margin-top:14px}
+.mail{display:grid;gap:12px;justify-items:start}
+.mail code{font-family:var(--mono);font-size:clamp(18px,2.2vw,24px);user-select:all;word-break:break-all}
+.mail .btn{border-color:var(--bg);color:var(--bg)}
+.mail .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.copied{font-size:14px;opacity:.85;min-height:1.2em}
+
+footer{padding-block:28px 40px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:grid;gap:14px}
+footer .legal{display:flex;flex-wrap:wrap;gap:6px 18px}
+
+@media (max-width:900px){
+  .hero .wrap,.row,.about .wrap,.contact .box{grid-template-columns:minmax(0,1fr)}
+  .row.flip .shot{order:0}
+  .also,.plans{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .phone-row{grid-template-columns:minmax(0,1fr)}
+  .phone{margin:0 auto}
+  section{padding-block:60px}
+  .contact .box{padding:28px}
+}
+@media (max-width:520px){ .nav{gap:14px} .nav a{font-size:14.5px} .hero .wrap{padding-block:40px 28px} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="OL Élec, accueil">
+      <svg viewBox="0 0 38 38" aria-hidden="true"><rect x="1" y="1" width="36" height="36" rx="8" fill="var(--accent)"/><circle cx="11" cy="19" r="5" fill="none" stroke="var(--accent-ink)" stroke-width="2.6"/><circle cx="27" cy="19" r="5" fill="none" stroke="var(--accent-ink)" stroke-width="2.6"/><path d="M16 19h6" stroke="var(--accent-ink)" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <b>OL Élec</b>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#banc">Banc de câblage</a>
+      <a href="#licences">Licences</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Logiciels pédagogiques · électricité</div>
+      <h1>Câbler, simuler, dépanner. <em>Sur n’importe quel écran.</em></h1>
+      <p class="lead">OL Élec conçoit des outils numériques pour les cours d’électricité du bâtiment et d’électromécanique. Ils sont pensés par un enseignant et utilisés chaque semaine en classe, avec de vrais élèves.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://olivier7887.github.io/banc-de-cablage/" target="_blank" rel="noopener">Essayer le Banc de câblage</a>
+        <a class="btn" href="#contact">Demander une licence</a>
+      </div>
+    </div>
+    <div class="shot"><img src="img/direct.jpg" width="2160" height="1350" alt="Le Banc de câblage en simulation : démarrage direct d’un moteur, le moteur M1 tourne, la bobine KM1 et le voyant H1 sont alimentés."></div>
+  </div>
+</div>
+
+<div class="harness" aria-hidden="true">
+  <div class="wrap">
+    <div class="wire w1"><span>L1</span><i></i></div>
+    <div class="wire w2"><span>L2</span><i></i></div>
+    <div class="wire w3"><span>L3</span><i></i></div>
+    <div class="wire w4"><span>N</span><i></i></div>
+    <div class="wire w5"><span>PE</span><i></i></div>
+  </div>
+</div>
+
+<section id="banc">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Le Banc de câblage</div>
+      <h2>Le simulateur de schémas électriques pour la classe</h2>
+      <p>L’élève pose les appareils, tire les fils borne par borne, puis passe en simulation : les phases prennent leur couleur, les contacteurs collent, le moteur tourne. Une vérification lui dit ce qui est mal raccordé, et le professeur retrouve le nombre d’essais sur sa capture.</p>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>70</b><span>exemples et défis prêts à l’emploi</span></div>
+      <div class="fact"><b>82</b><span>composants dans la bibliothèque</span></div>
+      <div class="fact"><b>366</b><span>pannes cachées dans 5 machines</span></div>
+      <div class="fact"><b>3</b><span>niveaux de difficulté par défi</span></div>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <div class="shot"><img src="img/modele3q.jpg" width="2160" height="1350" alt="Exercice 3Q de va-et-vient câblé sur le modèle de la classe : conducteurs colorés dans les tubes entre les boîtiers, la boîte de dérivation et les points lumineux."></div>
+        <div class="txt">
+          <div class="eyebrow">Électricité du bâtiment</div>
+          <h3>Du schéma de principe au câblage sur le modèle</h3>
+          <p>Allumages, va-et-vient, télérupteur, minuterie et différentiel, avec des fiches en trois étapes : identification de l’appareil, schéma de principe, schéma de câblage.</p>
+          <ul class="ticks">
+            <li>Câblage dans les tubes, conducteur brun, noir, gris, bleu ou vert-jaune</li>
+            <li>Copie virtuelle du simulateur du local et de sa feuille d’exercices</li>
+            <li>Vérification : phase coupée, neutre direct, terre raccordée</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row flip">
+        <div class="shot"><img src="img/variateur.jpg" width="2160" height="1350" alt="Variateur de fréquence en simulation à 40 Hz, commandé depuis un pupitre avec un sélecteur trois positions et un potentiomètre de vitesse."></div>
+        <div class="txt">
+          <div class="eyebrow">Électromécanique et maintenance</div>
+          <h3>Moteurs, variateurs et pupitres de commande</h3>
+          <p>Démarrage direct, inversion, étoile-triangle, Dahlander, bande transporteuse, variateur de fréquence et démarreur progressif. Le pupitre se construit trou par trou et commande la machine du schéma.</p>
+          <ul class="ticks">
+            <li>Rampes d’accélération, consigne de vitesse, fréquence affichée</li>
+            <li>Boutons, voyants, arrêt d’urgence et sélecteurs reliés aux repères S1, H1, SU…</li>
+            <li>Défis « habiller le pupitre » : couleurs et marquages vérifiés</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="shot"><img src="img/logo.jpg" width="2160" height="1350" alt="Programmation d’un module LOGO! en schéma à contacts, à côté du schéma de commande du moteur."></div>
+        <div class="txt">
+          <div class="eyebrow">Automatisme</div>
+          <h3>Programmer un LOGO! ou un Zelio et le voir agir</h3>
+          <p>Les modules LOGO! et Zelio se programment en contacts ou en blocs logiques : temporisations, télérupteur, compteur, clignotant. Le programme pilote ensuite les sorties câblées dans le schéma, jusqu’à un monte-charge animé commandé par un variateur.</p>
+          <ul class="ticks">
+            <li>Entrées en 230 V ou en 24 V continu, vérification du programme par un cycle complet</li>
+            <li>Capteurs inductif, capacitif, photoélectrique, magnétique, ultrasons</li>
+            <li>Pneumatique et électropneumatique : vérins, distributeurs, fins de course</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="also">
+      <div><h3>Recherche de pannes</h3><p>Une panne est cachée dans la machine. L’élève observe, émet une hypothèse, mesure au multimètre (pointes à poser sur les bornes, valeur en direct, calibres) et désigne l’élément défectueux. Bilan noté sur 20.</p></div>
+      <div><h3>Capture pour Classroom</h3><p>Une image haute résolution du travail, avec le nom de l’élève, la date, le résultat de la vérification et le nombre d’essais, à coller dans un devoir.</p></div>
+      <div><h3>Mode prof</h3><p>Exemples complets et solutions chiffrées, visibles seulement par le professeur. Un code permet de les montrer en classe sur l’appareil d’un élève.</p></div>
+    </div>
+
+    <div class="phone-row">
+      <div class="phone"><img src="img/mobile.jpg" width="780" height="1688" alt="Le Banc de câblage sur un smartphone : inversion du sens de marche en simulation."></div>
+      <div class="sec-head">
+        <div class="eyebrow">Partout</div>
+        <h2>Sur Chromebook, ordinateur, tablette et smartphone</h2>
+        <p>Le Banc de câblage s’ouvre dans le navigateur et s’installe comme une application. Il fonctionne hors ligne et se met à jour tout seul. Le travail en cours est effacé à la fermeture, pour que l’élève suivant reparte de zéro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="licences" class="lic">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Licences</div>
+      <h2>Une licence par établissement, pour une année scolaire</h2>
+      <p>Chaque licence est valable du 1er août au 30 septembre de l’année suivante. Elle s’active par un simple lien, à publier dans Classroom.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <span class="tag">Sans inscription</span>
+        <h3>Essai gratuit</h3>
+        <p>Trois défis ouverts à tous pour découvrir l’application : simple allumage, premier exercice de relais et simulateur libre.</p>
+      </div>
+      <div class="plan key">
+        <span class="tag">Pour les élèves</span>
+        <h3>Licence élève</h3>
+        <p>Tous les défis, pour une classe ou pour tout l’établissement. Les élèves l’activent en un clic depuis le lien de leur professeur.</p>
+      </div>
+      <div class="plan">
+        <span class="tag">Pour les professeurs</span>
+        <h3>Licence prof</h3>
+        <p>Le mode prof : exemples complets, solutions et liste des pannes avec leurs codes, pour préparer et corriger.</p>
+      </div>
+    </div>
+    <p class="note">Tarifs sur demande : envoyez le nom de l’établissement, le nombre de classes et de professeurs concernés, et vous recevrez un devis.</p>
+  </div>
+</section>
+
+<section id="apropos" class="about">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">À propos</div>
+      <h2>Olivier Lesenfants</h2>
+      <p>Enseignant en électricité du bâtiment et en électromécanique à l’Institut Saint-Roch de Marche-en-Famenne, en Belgique. Le Banc de câblage est né de ses cours : chaque exercice reprend le matériel, les schémas et les panneaux de câblage utilisés en atelier.</p>
+      <p>OL Élec est son activité indépendante : les outils sont développés, testés en classe, puis proposés aux autres écoles techniques et professionnelles.</p>
+    </div>
+    <div class="soon">
+      <div class="eyebrow">En préparation</div>
+      <h3>Labo Arduino</h3>
+      <p>Un simulateur d’électronique et d’Arduino dans le même esprit : des défis sur plusieurs niveaux, un câblage sur plaque d’essai et une programmation en blocs ou en code.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Une licence, une démonstration, une question ?</h2>
+        <p>Écrivez à OL Élec. Une démonstration en ligne ou dans votre établissement peut être organisée pour votre équipe.</p>
+      </div>
+      <div class="mail">
+        <code id="mailAddr">contact@olelec.be</code>
+        <div class="ctas" style="margin-top:0">
+          <a class="btn primary" href="mailto:contact@olelec.be?subject=Banc%20de%20c%C3%A2blage">Écrire un e-mail</a>
+          <button class="btn" id="copyMail" type="button">Copier l’adresse</button>
+        </div>
+        <div class="copied" id="copied" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="harness" aria-hidden="true" style="padding:0 0 20px">
+    <div class="wrap">
+      <div class="wire w1"><span></span><i></i></div><div class="wire w2"><span></span><i></i></div><div class="wire w3"><span></span><i></i></div><div class="wire w4"><span></span><i></i></div><div class="wire w5"><span></span><i></i></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="legal">
+      <span>© 2026 Olivier Lesenfants · OL Élec</span>
+      <span>TVA BE 1006.137.646</span>
+      <span>contact@olelec.be</span>
+    </div>
+    <p>Banc de câblage est un logiciel propriétaire, non open source. Son utilisation est réservée aux détenteurs d’une licence valide ; toute copie, diffusion ou tout contournement du système de licence est interdit.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b = document.getElementById('copyMail'), out = document.getElementById('copied'), addr = 'contact@olelec.be';
+  b.addEventListener('click', function(){
+    var done = function(){ out.textContent = 'Adresse copiée.'; };
+    var fail = function(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('mailAddr')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = 'Adresse sélectionnée : copiez-la avec Ctrl+C.'; };
+    try{ navigator.clipboard.writeText(addr).then(done, fail); }catch(e){ fail(); }
+  });
+})();
+</script>
+</body>
+</html>
