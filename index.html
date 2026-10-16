@@ -130,10 +130,13 @@ section{padding-block:84px}
 .mail .btn{border-color:var(--bg);color:var(--bg)}
 .mail .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .copied{font-size:14px;opacity:.85;min-height:1.2em}
+.mail .tel{margin:0;font-size:15.5px}
+.mail .tel a{color:inherit;font-weight:600}
 
 footer{padding-block:28px 40px;color:var(--muted);font-size:14.5px}
 footer .wrap{display:grid;gap:14px}
 footer .legal{display:flex;flex-wrap:wrap;gap:6px 18px}
+footer .legal a{color:inherit}
 
 @media (max-width:900px){
   .hero .wrap,.row,.about .wrap,.contact .box{grid-template-columns:minmax(0,1fr)}
@@ -325,6 +328,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 18px}
           <button class="btn" id="copyMail" type="button">Copier l’adresse</button>
         </div>
         <div class="copied" id="copied" aria-live="polite"></div>
+        <p class="tel">Ou par téléphone : <a href="tel:+32472773646">0472 77 36 46</a></p>
       </div>
     </div>
   </div>
@@ -340,8 +344,10 @@ footer .legal{display:flex;flex-wrap:wrap;gap:6px 18px}
   <div class="wrap">
     <div class="legal">
       <span>© 2026 Olivier Lesenfants · OL Élec</span>
-      <span>TVA BE 1006.137.646</span>
-      <span>contact@olelec.be</span>
+      <span>N° d’entreprise et TVA : BE 1006.137.646</span>
+      <span>Rue du Fonteni 26, 6960 Malempré, Belgique</span>
+      <span><a href="tel:+32472773646">0472 77 36 46</a></span>
+      <span><a href="mailto:contact@olelec.be">contact@olelec.be</a></span>
     </div>
     <p>Banc de câblage est un logiciel propriétaire, non open source. Son utilisation est réservée aux détenteurs d’une licence valide ; toute copie, diffusion ou tout contournement du système de licence est interdit.</p>
   </div>
