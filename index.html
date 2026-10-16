@@ -88,6 +88,9 @@ section{padding-block:84px}
 .rows{display:grid;gap:72px;margin-top:64px}
 .row{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:center}
 .row.flip .shot{order:2}
+.vid{margin:44px 0 0}
+.vid video{display:block;width:100%;height:auto;background:#15191c}
+.vid figcaption{margin-top:12px;color:var(--muted);font-size:15px;text-align:center}
 .row .txt{display:grid;gap:14px;min-width:0}
 .row .txt p{color:var(--muted)}
 .ticks{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
@@ -210,6 +213,11 @@ footer .legal a{color:inherit}
       <div class="fact"><b>366</b><span>pannes cachées dans 5 machines</span></div>
       <div class="fact"><b>3</b><span>niveaux de difficulté par défi</span></div>
     </div>
+
+    <figure class="vid">
+      <div class="shot"><video controls preload="metadata" playsinline poster="img/video-poster.jpg" width="1920" height="1080"><source src="video/banc-de-cablage.mp4" type="video/mp4">Votre navigateur ne lit pas cette vidéo : <a href="video/banc-de-cablage.mp4">téléchargez-la</a>.</video></div>
+      <figcaption>Le Banc de câblage en trois minutes, commenté : câblage, vérification, simulation, multimètre, automates, recherche de pannes.</figcaption>
+    </figure>
 
     <div class="rows">
       <div class="row">
