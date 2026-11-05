@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Labo Arduino · OL Élec</title>
+<meta name="description" content="Labo Arduino, simulateur d’électronique et d’Arduino : câblage sur plaque d’essai, programmation en blocs ou en code C, 21 défis vérifiés automatiquement.">
+<link rel="icon" type="image/png" href="img/icon-labo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/site.css?v=3">
+</head>
+<body class="p-labo">
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="OL Élec, page d’accueil"><img src="img/olelec-logo.png?v=3" width="447" height="162" alt="OL Élec"></a>
+    <nav class="nav" aria-label="Pages">
+      <a href="banc-de-cablage.html">Banc de câblage</a>
+      <a href="labo-arduino.html" aria-current="page">Labo Arduino</a>
+      <a href="dossier-tp.html">Dossier TP</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="index.html#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="app-id"><img src="img/icon-labo.png" width="128" height="128" alt=""><div class="eyebrow">Labo Arduino</div></div>
+      <h1>L’Arduino en classe, <em>sans griller une seule vraie LED.</em></h1>
+      <p class="lead">Le simulateur d’électronique et d’Arduino. L’élève câble ses composants sur la plaque d’essai, programme la carte en blocs ou en code C, puis téléverse : la LED s’allume, le servomoteur tourne, le moniteur série affiche ses mesures. Et si la résistance manque, la LED grille, comme sur la table.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://olivier7887.github.io/Labo-Arduino/" target="_blank" rel="noopener">Ouvrir le Labo Arduino</a>
+        <a class="btn" href="#contact">Demander une démonstration</a>
+      </div>
+    </div>
+    <div class="shot"><img src="img/labo-blocs.jpg" width="2160" height="1350" alt="Le Labo Arduino : un feu de signalisation câblé avec trois LED et leurs résistances, programmé en blocs ; la LED rouge est allumée."></div>
+  </div>
+</div>
+
+<div class="harness" aria-hidden="true">
+  <div class="wrap">
+    <div class="wire w1"><span>L1</span><i></i></div>
+    <div class="wire w2"><span>L2</span><i></i></div>
+    <div class="wire w3"><span>L3</span><i></i></div>
+    <div class="wire w4"><span>N</span><i></i></div>
+    <div class="wire w5"><span>PE</span><i></i></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact"><b>21</b><span>défis vérifiés automatiquement</span></div>
+      <div class="fact"><b>4</b><span>niveaux, des premières LED aux projets</span></div>
+      <div class="fact"><b>2</b><span>façons de programmer : blocs ou code C</span></div>
+      <div class="fact"><b>1</b><span>carte Arduino Uno, une vingtaine de composants</span></div>
+    </div>
+
+    <figure class="vid">
+      <div class="shot"><video controls preload="metadata" playsinline poster="img/video-labo.jpg" width="1920" height="1080"><source src="video/labo-arduino.mp4" type="video/mp4">Votre navigateur ne lit pas cette vidéo : <a href="video/labo-arduino.mp4">téléchargez-la</a>.</video></div>
+      <figcaption>Le Labo Arduino en deux minutes : câblage, programmation en blocs, téléversement, vérification d’un défi, capture et LED grillée.</figcaption>
+    </figure>
+    <div class="rows">
+      <div class="row">
+        <div class="shot"><img src="img/labo-blocs.jpg" width="2160" height="1350" alt="Programmation en blocs du feu de signalisation, avec le code Arduino généré en dessous."></div>
+        <div class="txt">
+          <div class="eyebrow">Programmer</div>
+          <h3>Des blocs au code C, à son rythme</h3>
+          <p>Les blocs « au démarrage » et « répéter sans fin » reprennent setup() et loop(). Sous les blocs, le code Arduino s’écrit tout seul : l’élève voit la correspondance, puis passe au code C quand il est prêt.</p>
+          <ul class="ticks">
+            <li>Broches, temps, conditions, boucles, variables, sons, servomoteur</li>
+            <li>Afficheurs et modules : 7 segments, écran LCD, ultrasons, lecteur de badges</li>
+            <li>Moniteur série pour afficher les mesures</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row flip">
+        <div class="shot"><img src="img/labo-code.jpg" width="2160" height="1350" alt="Le même feu de signalisation programmé en code C, en cours d’exécution."></div>
+        <div class="txt">
+          <div class="eyebrow">Simuler</div>
+          <h3>Une vraie simulation électrique</h3>
+          <p>Le simulateur calcule le circuit : une LED sans résistance grille, une entrée oubliée « flotte », un court-circuit est signalé. Au survol, le multimètre donne la tension. Le code C se comporte comme sur la vraie carte, jusqu’aux divisions entières.</p>
+          <ul class="ticks">
+            <li>Plaque d’essai de 30 colonnes, reliée comme une vraie</li>
+            <li>LED, LED RVB, bouton, potentiomètre, LDR, TMP36, PIR, relais, buzzer…</li>
+            <li>Bibliothèques LiquidCrystal_I2C et MFRC522</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="shot"><img src="img/labo-defis.jpg" width="2160" height="1350" alt="La liste des défis du Labo Arduino, répartis sur quatre niveaux."></div>
+        <div class="txt">
+          <div class="eyebrow">Progresser</div>
+          <h3>21 défis, du clignotant au contrôle d’accès</h3>
+          <p>Premiers pas, entrées, capteurs et actionneurs, puis projets : feu de signalisation, télérupteur, thermostat, barrière de parking, alarme, télémètre, lecteur de badges. Chaque défi est vérifié en faisant tourner le programme : l’app dit précisément ce qui ne va pas.</p>
+          <ul class="ticks">
+            <li>Objectif, matériel et étapes pour chaque défi</li>
+            <li>Indices progressifs quand l’élève bloque</li>
+            <li>Nombre d’essais compté pour le professeur</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="also">
+      <div><h3>Capture pour Classroom</h3><p>Une image du travail avec le nom de l’élève, la date, le défi, le résultat de la vérification, le nombre d’essais, tout le montage et le programme.</p></div>
+      <div><h3>Mode prof</h3><p>Protégé par mot de passe : solutions de tous les défis en blocs et en code C, et correction des projets rendus par les élèves.</p></div>
+      <div><h3>Partout, hors connexion</h3><p>Le Labo Arduino s’installe sur Chromebook, ordinateur, Android ou iPhone et fonctionne sans internet. Le travail est effacé à la fermeture, pour l’élève suivant.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-block:60px">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow" style="color:var(--accent)">Les autres applications OL Élec</div></div>
+    <div class="more"><a class="c-banc" href="banc-de-cablage.html"><img src="img/icon-banc.png" width="128" height="128" alt=""><div><b>Banc de câblage</b><span>Simulateur de schémas électriques</span></div></a><a class="c-dossier" href="dossier-tp.html"><img src="img/icon-dossier.png" width="128" height="128" alt=""><div><b>Dossier TP</b><span>Le dossier de travaux pratiques</span></div></a></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Le Labo Arduino dans votre école ?</h2>
+        <p>Écrivez à OL Élec pour une démonstration ou pour connaître les conditions pour votre établissement.</p>
+      </div>
+      <div class="mail">
+        <code id="mailAddr">contact@olelec.be</code>
+        <div class="ctas" style="margin-top:0">
+          <a class="btn primary" href="mailto:contact@olelec.be?subject=Labo%20Arduino">Écrire un e-mail</a>
+          <button class="btn" id="copyMail" type="button">Copier l’adresse</button>
+        </div>
+        <div class="copied" id="copied" aria-live="polite"></div>
+        <p class="tel">Ou par téléphone : <a href="tel:+32472773646">0472 77 36 46</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="harness" aria-hidden="true" style="padding:0 0 20px">
+    <div class="wrap">
+      <div class="wire w1"><span></span><i></i></div><div class="wire w2"><span></span><i></i></div><div class="wire w3"><span></span><i></i></div><div class="wire w4"><span></span><i></i></div><div class="wire w5"><span></span><i></i></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="legal">
+      <span>© 2026 Olivier Lesenfants · OL Élec</span>
+      <span>N° d’entreprise et TVA : BE 1006.137.646</span>
+      <span>Rue du Fonteni 26, 6960 Malempré, Belgique</span>
+      <span><a href="tel:+32472773646">0472 77 36 46</a></span>
+      <span><a href="mailto:contact@olelec.be">contact@olelec.be</a></span>
+    </div>
+    <p>Banc de câblage, Labo Arduino et Dossier TP sont des logiciels propriétaires, non open source. Leur utilisation est réservée aux détenteurs d’une licence ou d’un accès accordé par OL Élec ; toute copie, diffusion ou tout contournement du système de licence est interdit.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b = document.getElementById('copyMail'), out = document.getElementById('copied'), addr = 'contact@olelec.be';
+  if(!b) return;
+  b.addEventListener('click', function(){
+    var done = function(){ out.textContent = 'Adresse copiée.'; };
+    var fail = function(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('mailAddr')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = 'Adresse sélectionnée : copiez-la avec Ctrl+C.'; };
+    try{ navigator.clipboard.writeText(addr).then(done, fail); }catch(e){ fail(); }
+  });
+})();
+</script>
+</body>
+</html>

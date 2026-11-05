@@ -1,0 +1,77 @@
+{
+ "video": "video/labo-arduino.mp4",
+ "duree_s": 118.95,
+ "note": "Commentaire à lire en voix off ; chaque texte commence à debut_s + 0,3 s.",
+ "chapitres": [
+  {
+   "cle": "titre",
+   "numero": "",
+   "titre": "",
+   "debut_s": 0.31,
+   "commentaire": "Le Labo Arduino est un simulateur d’électronique et d’Arduino, conçu par un enseignant pour la classe."
+  },
+  {
+   "cle": "defis",
+   "numero": "1",
+   "titre": "Des défis sur quatre niveaux",
+   "debut_s": 9.15,
+   "commentaire": "Vingt et un défis, des premières LED aux projets complets. Chaque défi donne l’objectif, le matériel et les étapes."
+  },
+  {
+   "cle": "cabler",
+   "numero": "2",
+   "titre": "Câbler",
+   "debut_s": 18.38,
+   "commentaire": "On relie les composants à la carte, fil par fil, comme sur la table : chaque LED a sa résistance, et les cathodes rejoignent la masse."
+  },
+  {
+   "cle": "blocs",
+   "numero": "3",
+   "titre": "Programmer en blocs",
+   "debut_s": 29.37,
+   "commentaire": "Le programme se construit avec des blocs. Au démarrage, les broches passent en sortie. Puis, dans la boucle, chaque feu s’allume à son tour."
+  },
+  {
+   "cle": "code",
+   "numero": "4",
+   "titre": "Le code C, en dessous",
+   "debut_s": 60.36,
+   "commentaire": "Sous les blocs, le code Arduino s’écrit tout seul. L’élève voit la correspondance, et passe au code C quand il est prêt."
+  },
+  {
+   "cle": "televerser",
+   "numero": "5",
+   "titre": "Téléverser",
+   "debut_s": 69.94,
+   "commentaire": "On téléverse, et la carte exécute le programme : vert, orange, rouge."
+  },
+  {
+   "cle": "verifier",
+   "numero": "6",
+   "titre": "Vérifier le défi",
+   "debut_s": 76.0,
+   "commentaire": "La vérification fait tourner le programme et contrôle le comportement attendu. L’app dit précisément ce qui ne va pas."
+  },
+  {
+   "cle": "griller",
+   "numero": "8",
+   "titre": "Une vraie simulation",
+   "debut_s": 96.11,
+   "commentaire": "Le simulateur calcule le circuit : une LED branchée sans résistance grille, comme en vrai. Mieux vaut l’apprendre ici que sur la table."
+  },
+  {
+   "cle": "capture",
+   "numero": "7",
+   "titre": "Capture pour Classroom",
+   "debut_s": 86.95,
+   "commentaire": "La capture rassemble le nom de l’élève, le défi, le résultat et le nombre d’essais, prête à rendre dans Classroom."
+  },
+  {
+   "cle": "fin",
+   "numero": "",
+   "titre": "",
+   "debut_s": 108.0,
+   "commentaire": "Le Labo Arduino fonctionne sur Chromebook, ordinateur, tablette et smartphone, même hors connexion. Plus d’informations sur olelec.be."
+  }
+ ]
+}

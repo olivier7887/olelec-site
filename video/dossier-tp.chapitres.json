@@ -1,0 +1,70 @@
+{
+ "video": "video/dossier-tp.mp4",
+ "duree_s": 113.67,
+ "note": "Commentaire à lire en voix off ; chaque texte commence à debut_s + 0,3 s.",
+ "chapitres": [
+  {
+   "cle": "titre",
+   "numero": "",
+   "titre": "",
+   "debut_s": 0.31,
+   "commentaire": "Dossier TP rassemble tout ce qu’il faut pour un travail pratique d’électricité, dans une seule application."
+  },
+  {
+   "cle": "connexion",
+   "numero": "1",
+   "titre": "Mes TP",
+   "debut_s": 9.5,
+   "commentaire": "L’élève se connecte avec son compte de l’école, choisit sa classe et son professeur, puis retrouve ses TP, du montage de la planche au va-et-vient."
+  },
+  {
+   "cle": "enonce",
+   "numero": "2",
+   "titre": "L’énoncé",
+   "debut_s": 20.93,
+   "commentaire": "Chaque TP s’ouvre sur un dossier en plusieurs feuilles. L’énoncé est personnel : appareils, emplacements et finition changent d’un élève à l’autre."
+  },
+  {
+   "cle": "mode",
+   "numero": "3",
+   "titre": "Le mode opératoire",
+   "debut_s": 32.37,
+   "commentaire": "Le mode opératoire donne les étapes dans l’ordre. L’élève les coche au fur et à mesure, et chaque étape renvoie vers la fiche qui l’explique."
+  },
+  {
+   "cle": "unifilaire",
+   "numero": "4",
+   "titre": "Le schéma unifilaire",
+   "debut_s": 43.4,
+   "commentaire": "Pour l’unifilaire, l’élève choisit la protection, la canalisation et les points raccordés : le schéma se dessine tout seul, à la façon Trikker."
+  },
+  {
+   "cle": "cablage",
+   "numero": "5",
+   "titre": "Le câblage sur la planche",
+   "debut_s": 54.56,
+   "commentaire": "Sur la planche, il place les appareils aux emplacements de l’énoncé, puis tire chaque fil dans les tubes, jusqu’aux bornes Wago de la boîte."
+  },
+  {
+   "cle": "bdc",
+   "numero": "6",
+   "titre": "Le bon de commande",
+   "debut_s": 73.46,
+   "commentaire": "Le bon de commande se remplit depuis le catalogue Niko. L’élève règle les quantités, choisit le taux de TVA et justifie son choix."
+  },
+  {
+   "cle": "remise",
+   "numero": "7",
+   "titre": "La remise",
+   "debut_s": 92.87,
+   "commentaire": "Avant la remise, l’app vérifie que chaque partie est complète. L’élève ajoute la photo de son montage, puis remet son dossier au professeur."
+  },
+  {
+   "cle": "fin",
+   "numero": "",
+   "titre": "",
+   "debut_s": 103.82,
+   "commentaire": "Dossier TP fonctionne sur Chromebook, ordinateur et smartphone, même sans internet. Plus d’informations sur olelec.be."
+  }
+ ]
+}

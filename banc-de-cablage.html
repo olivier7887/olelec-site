@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Banc de câblage · OL Élec</title>
+<meta name="description" content="Le Banc de câblage, simulateur de schémas électriques pour la classe : câblage borne par borne, simulation, vérification, recherche de pannes, automates LOGO! et Zelio.">
+<link rel="icon" type="image/png" href="img/icon-banc.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/site.css?v=3">
+</head>
+<body class="p-banc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="OL Élec, page d’accueil"><img src="img/olelec-logo.png?v=3" width="447" height="162" alt="OL Élec"></a>
+    <nav class="nav" aria-label="Pages">
+      <a href="banc-de-cablage.html" aria-current="page">Banc de câblage</a>
+      <a href="labo-arduino.html">Labo Arduino</a>
+      <a href="dossier-tp.html">Dossier TP</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="index.html#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="app-id"><img src="img/icon-banc.png" width="128" height="128" alt=""><div class="eyebrow">Banc de câblage</div></div>
+      <h1>Câbler, simuler, dépanner. <em>Sur n’importe quel écran.</em></h1>
+      <p class="lead">Le simulateur de schémas électriques pour la classe. L’élève pose les appareils, tire les fils borne par borne, puis passe en simulation : les phases prennent leur couleur, les contacteurs collent, le moteur tourne. Une vérification lui dit ce qui est mal raccordé, et le professeur retrouve le nombre d’essais sur sa capture.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://olivier7887.github.io/banc-de-cablage/" target="_blank" rel="noopener">Essayer le Banc de câblage</a>
+        <a class="btn" href="#licences">Les licences</a>
+      </div>
+    </div>
+    <div class="shot"><img src="img/direct.jpg?v=2" width="2160" height="1350" alt="Le Banc de câblage en simulation : démarrage direct d’un moteur, le moteur M1 tourne, la bobine KM1 et le voyant H1 sont alimentés."></div>
+  </div>
+</div>
+
+<div class="harness" aria-hidden="true">
+  <div class="wrap">
+    <div class="wire w1"><span>L1</span><i></i></div>
+    <div class="wire w2"><span>L2</span><i></i></div>
+    <div class="wire w3"><span>L3</span><i></i></div>
+    <div class="wire w4"><span>N</span><i></i></div>
+    <div class="wire w5"><span>PE</span><i></i></div>
+  </div>
+</div>
+
+<section id="banc">
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact"><b>70</b><span>exemples et défis prêts à l’emploi</span></div>
+      <div class="fact"><b>82</b><span>composants dans la bibliothèque</span></div>
+      <div class="fact"><b>366</b><span>pannes cachées dans 5 machines</span></div>
+      <div class="fact"><b>3</b><span>niveaux de difficulté par défi</span></div>
+    </div>
+
+    <figure class="vid">
+      <div class="shot"><video controls preload="metadata" playsinline poster="img/video-poster.jpg" width="1920" height="1080"><source src="video/banc-de-cablage.mp4" type="video/mp4">Votre navigateur ne lit pas cette vidéo : <a href="video/banc-de-cablage.mp4">téléchargez-la</a>.</video></div>
+      <figcaption>Le Banc de câblage en un peu plus de trois minutes, commenté : câblage, vérification, simulation, multimètre, automates, recherche de pannes.</figcaption>
+    </figure>
+
+    <div class="rows">
+      <div class="row">
+        <div class="shot"><img src="img/modele3q.jpg?v=2" width="2160" height="1350" alt="Exercice 3Q de va-et-vient câblé sur le modèle de la classe : conducteurs colorés dans les tubes entre les boîtiers, la boîte de dérivation et les points lumineux."></div>
+        <div class="txt">
+          <div class="eyebrow">Électricité du bâtiment</div>
+          <h3>Du schéma de principe au câblage sur le modèle</h3>
+          <p>Allumages, va-et-vient, télérupteur, minuterie et différentiel, avec des fiches en trois étapes : identification de l’appareil, schéma de principe, schéma de câblage.</p>
+          <ul class="ticks">
+            <li>Câblage dans les tubes, conducteur brun, noir, gris, bleu ou vert-jaune</li>
+            <li>Copie virtuelle du simulateur du local et de sa feuille d’exercices</li>
+            <li>Vérification : phase coupée, neutre direct, terre raccordée</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row flip">
+        <div class="shot"><img src="img/variateur.jpg?v=2" width="2160" height="1350" alt="Variateur de fréquence en simulation à 40 Hz, commandé depuis un pupitre avec un sélecteur trois positions et un potentiomètre de vitesse."></div>
+        <div class="txt">
+          <div class="eyebrow">Électromécanique et maintenance</div>
+          <h3>Moteurs, variateurs et pupitres de commande</h3>
+          <p>Démarrage direct, inversion, étoile-triangle, Dahlander, bande transporteuse, variateur de fréquence et démarreur progressif. Le pupitre se construit trou par trou et commande la machine du schéma.</p>
+          <ul class="ticks">
+            <li>Rampes d’accélération, consigne de vitesse, fréquence affichée</li>
+            <li>Boutons, voyants, arrêt d’urgence et sélecteurs reliés aux repères S1, H1, SU…</li>
+            <li>Défis « habiller le pupitre » : couleurs et marquages vérifiés</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="shot"><img src="img/logo.jpg?v=2" width="2160" height="1350" alt="Programmation d’un module LOGO! en schéma à contacts, à côté du schéma de commande du moteur."></div>
+        <div class="txt">
+          <div class="eyebrow">Automatisme</div>
+          <h3>Programmer un LOGO! ou un Zelio et le voir agir</h3>
+          <p>Les modules LOGO! et Zelio se programment en contacts ou en blocs logiques : temporisations, télérupteur, compteur, clignotant. Le programme pilote ensuite les sorties câblées dans le schéma, jusqu’à un monte-charge animé commandé par un variateur.</p>
+          <ul class="ticks">
+            <li>Entrées en 230 V ou en 24 V continu, vérification du programme par un cycle complet</li>
+            <li>Capteurs inductif, capacitif, photoélectrique, magnétique, ultrasons</li>
+            <li>Pneumatique et électropneumatique : vérins, distributeurs, fins de course</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="also">
+      <div><h3>Recherche de pannes</h3><p>Une panne est cachée dans la machine. L’élève observe, émet une hypothèse, mesure au multimètre (pointes à poser sur les bornes, valeur en direct, calibres) et désigne l’élément défectueux. Bilan noté sur 20.</p></div>
+      <div><h3>Capture pour Classroom</h3><p>Une image haute résolution du travail, avec le nom de l’élève, la date, le résultat de la vérification et le nombre d’essais, à coller dans un devoir.</p></div>
+      <div><h3>Mode prof</h3><p>Exemples complets et solutions chiffrées, visibles seulement par le professeur. Un code permet de les montrer en classe sur l’appareil d’un élève.</p></div>
+    </div>
+
+    <div class="phone-row">
+      <div class="phone"><img src="img/mobile.jpg?v=2" width="780" height="1688" alt="Le Banc de câblage sur un smartphone : inversion du sens de marche en simulation."></div>
+      <div class="sec-head">
+        <div class="eyebrow">Partout</div>
+        <h2>Sur Chromebook, ordinateur, tablette et smartphone</h2>
+        <p>Le Banc de câblage s’ouvre dans le navigateur et s’installe comme une application. Il fonctionne hors ligne et se met à jour tout seul. Le travail en cours est effacé à la fermeture, pour que l’élève suivant reparte de zéro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="licences" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Licences</div>
+      <h2>Une licence par établissement, pour une année scolaire</h2>
+      <p>Chaque licence est valable du 1er août au 30 septembre de l’année suivante. Elle s’active par un simple lien, à publier dans Classroom.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <span class="tag">Sans inscription</span>
+        <h3>Essai gratuit</h3>
+        <p>Trois défis ouverts à tous pour découvrir l’application : simple allumage, premier exercice de relais et simulateur libre.</p>
+      </div>
+      <div class="plan key">
+        <span class="tag">Pour les élèves</span>
+        <h3>Licence élève</h3>
+        <p>Tous les défis, pour une classe ou pour tout l’établissement. Les élèves l’activent en un clic depuis le lien de leur professeur.</p>
+      </div>
+      <div class="plan">
+        <span class="tag">Pour les professeurs</span>
+        <h3>Licence prof</h3>
+        <p>Le mode prof : exemples complets, solutions et liste des pannes avec leurs codes, pour préparer et corriger.</p>
+      </div>
+    </div>
+    <p class="note">Tarifs sur demande : envoyez le nom de l’établissement, le nombre de classes et de professeurs concernés, et vous recevrez un devis.</p>
+  </div>
+</section>
+
+<section class="band" style="padding-block:60px">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow" style="color:var(--accent)">Les autres applications OL Élec</div></div>
+    <div class="more"><a class="c-labo" href="labo-arduino.html"><img src="img/icon-labo.png" width="128" height="128" alt=""><div><b>Labo Arduino</b><span>Simulateur d’électronique et d’Arduino</span></div></a><a class="c-dossier" href="dossier-tp.html"><img src="img/icon-dossier.png" width="128" height="128" alt=""><div><b>Dossier TP</b><span>Le dossier de travaux pratiques</span></div></a></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Une licence, une démonstration, une question ?</h2>
+        <p>Écrivez à OL Élec. Une démonstration en ligne ou dans votre établissement peut être organisée pour votre équipe.</p>
+      </div>
+      <div class="mail">
+        <code id="mailAddr">contact@olelec.be</code>
+        <div class="ctas" style="margin-top:0">
+          <a class="btn primary" href="mailto:contact@olelec.be?subject=Banc%20de%20c%C3%A2blage">Écrire un e-mail</a>
+          <button class="btn" id="copyMail" type="button">Copier l’adresse</button>
+        </div>
+        <div class="copied" id="copied" aria-live="polite"></div>
+        <p class="tel">Ou par téléphone : <a href="tel:+32472773646">0472 77 36 46</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="harness" aria-hidden="true" style="padding:0 0 20px">
+    <div class="wrap">
+      <div class="wire w1"><span></span><i></i></div><div class="wire w2"><span></span><i></i></div><div class="wire w3"><span></span><i></i></div><div class="wire w4"><span></span><i></i></div><div class="wire w5"><span></span><i></i></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="legal">
+      <span>© 2026 Olivier Lesenfants · OL Élec</span>
+      <span>N° d’entreprise et TVA : BE 1006.137.646</span>
+      <span>Rue du Fonteni 26, 6960 Malempré, Belgique</span>
+      <span><a href="tel:+32472773646">0472 77 36 46</a></span>
+      <span><a href="mailto:contact@olelec.be">contact@olelec.be</a></span>
+    </div>
+    <p>Banc de câblage, Labo Arduino et Dossier TP sont des logiciels propriétaires, non open source. Leur utilisation est réservée aux détenteurs d’une licence ou d’un accès accordé par OL Élec ; toute copie, diffusion ou tout contournement du système de licence est interdit.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b = document.getElementById('copyMail'), out = document.getElementById('copied'), addr = 'contact@olelec.be';
+  if(!b) return;
+  b.addEventListener('click', function(){
+    var done = function(){ out.textContent = 'Adresse copiée.'; };
+    var fail = function(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('mailAddr')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = 'Adresse sélectionnée : copiez-la avec Ctrl+C.'; };
+    try{ navigator.clipboard.writeText(addr).then(done, fail); }catch(e){ fail(); }
+  });
+})();
+</script>
+</body>
+</html>
